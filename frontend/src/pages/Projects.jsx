@@ -15,7 +15,7 @@ export default function Projects() {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/projects', { headers })
+      const res = await axios.get('https://team-task-manager-backend-wkzs.onrender.com/api/projects', { headers })
       setProjects(res.data)
     } catch (err) { setError('Failed to fetch projects') }
   }
@@ -25,14 +25,14 @@ export default function Projects() {
   const createProject = async () => {
     if (!name) return setError('Project name is required')
     try {
-      await axios.post('http://localhost:5000/api/projects', { name, description }, { headers })
+      await axios.post('https://team-task-manager-backend-wkzs.onrender.com/api/projects', { name, description }, { headers })
       setName(''); setDescription(''); fetchProjects()
     } catch (err) { setError(err.response?.data?.msg || 'Failed to create project') }
   }
 
   const deleteProject = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/projects/${id}`, { headers })
+      await axios.delete(`https://team-task-manager-backend-wkzs.onrender.com/api/projects/${id}`, { headers })
       fetchProjects()
     } catch (err) { setError('Failed to delete project') }
   }

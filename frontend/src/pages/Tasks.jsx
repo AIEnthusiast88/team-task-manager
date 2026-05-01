@@ -15,7 +15,7 @@ export default function Tasks() {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/tasks/project/${projectId}`, { headers })
+      const res = await axios.get(`https://team-task-manager-backend-wkzs.onrender.com/api/tasks/project/${projectId}`, { headers })
       setTasks(res.data)
     } catch (err) { setError('Failed to fetch tasks') }
   }
@@ -25,7 +25,7 @@ export default function Tasks() {
   const createTask = async () => {
     if (!form.title) return setError('Task title is required')
     try {
-      await axios.post('http://localhost:5000/api/tasks', { ...form, project: projectId }, { headers })
+      await axios.post('https://team-task-manager-backend-wkzs.onrender.com/api/tasks', { ...form, project: projectId }, { headers })
       setForm({ title: '', description: '', assignedTo: '', dueDate: '', priority: 'Medium' })
       fetchTasks()
     } catch (err) { setError(err.response?.data?.msg || 'Failed to create task') }
@@ -33,14 +33,14 @@ export default function Tasks() {
 
   const updateStatus = async (id, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/tasks/${id}`, { status }, { headers })
+      await axios.put(`https://team-task-manager-backend-wkzs.onrender.com/api/tasks/${id}`, { status }, { headers })
       fetchTasks()
     } catch (err) { setError('Failed to update status') }
   }
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, { headers })
+      await axios.delete(`https://team-task-manager-backend-wkzs.onrender.com/api/tasks/${id}`, { headers })
       fetchTasks()
     } catch (err) { setError('Failed to delete task') }
   }
