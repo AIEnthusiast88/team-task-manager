@@ -4,6 +4,9 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Projects from './pages/Projects'
 import Tasks from './pages/Tasks'
+import Analytics from './pages/Analytics'
+import Users from './pages/Users'
+import Deadlines from './pages/Deadlines'
 
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token')
@@ -19,6 +22,9 @@ export default function App() {
         <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="/projects" element={<PrivateRoute><Projects /></PrivateRoute>} />
         <Route path="/tasks/:projectId" element={<PrivateRoute><Tasks /></PrivateRoute>} />
+        <Route path="/analytics" element={<PrivateRoute><Analytics /></PrivateRoute>} />
+        <Route path="/users" element={<PrivateRoute><Users /></PrivateRoute>} />
+        <Route path="/deadlines" element={<PrivateRoute><Deadlines /></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
   )
