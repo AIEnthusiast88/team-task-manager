@@ -15,7 +15,12 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
+// Add this line after app.use(express.json());
+app.get('/', (req, res) => res.json({ 
+  message: 'Team Task Manager API', 
+  status: 'Running',
+  version: '1.0.0'
+}));
 app.get('/api/health', (req, res) => res.json({ status: 'OK' }));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/projects', require('./routes/projects'));
